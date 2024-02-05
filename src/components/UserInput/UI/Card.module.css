@@ -1,0 +1,5 @@
+.card{
+  background: linear-gradient(180deg, #37c7eb, #3a9dbb);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.26);
+  border-radius: 10px;
+}

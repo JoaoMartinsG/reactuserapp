@@ -1,24 +1,25 @@
 import './App.css'
 import { useState } from 'react'
-import UserInputForm from './components/UserInput/UserInputForm'
-import UserTable from './components/UserTable/UserTable'
+
 import AddUser from './components/UserInput/Users/AddUser'
+import UsersList from './components/UserInput/Users/UsersList'
 
 function App() {
-  const initialUsersData = [{ name: 'Max', age: 32 }]
-  const [usersData, setUserData] = useState(initialUsersData)
+  const [usersData, setUsersData] = useState([])
 
-  const addUserHandler = (user) => {
-    setUserData((prevUsers) => {
-      return [user, ...prevUsers]
+  const addUserHandler = (uName, uAge) => {
+    setUsersData((prevUsers) => {
+      return [
+        ...prevUsers,
+        { name: uName, age: uAge, id: Math.random().toString() },
+      ]
     })
   }
 
   return (
     <div>
-      <AddUser />
-      {/* {usersData && <UserInputForm onAddUser={addUserHandler} />} */}
-      <UserTable users={usersData} />
+      <AddUser onAddUser={addUserHandler} />
+      <UsersList users={usersData} />
     </div>
   )
 }
